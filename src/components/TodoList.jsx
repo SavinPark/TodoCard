@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
-import { TodoContext } from "../App";
+import { TodoContext, PageContext } from "../App";
 
 // styled-components
 // const TodoListBlock = styled.div`
@@ -16,13 +16,14 @@ const TodoListBlock = styled.ul`
 function TodoList() {
 
   const {todos, loading, n} = useContext(TodoContext);
+  const {p} = useContext(PageContext);
 
   const now = new Date(); 
-  const dailyKey = Number(new Date(now.setDate(now.getDate() + n)).toISOString().substring(0,10).replace(/-/g,'')); 
+  const dailyKey = Number(new Date(now.setDate(now.getDate() + p)).toISOString().substring(0,10).replace(/-/g,'')); 
 
   let todoList = <div>Loading...</div>;
 
-  // 전체 todos (오늘의 todo 골라내지 않은..)
+  // 전체 todos (오늘의 todo 골라내지 않은..code)
   // if(!loading) todoList = todos.map(todo => <TodoItem key={todo.id} todo={todo} />);
 
   // todos 중에서 오늘의 todo만 골라내기

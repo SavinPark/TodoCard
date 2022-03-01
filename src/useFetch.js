@@ -13,9 +13,9 @@ const useFetch = (when, callback, url) => {
     const initialData = await response.json();
     callback(initialData);
 
-    console.log('useFetch', when); // 디버깅
-    console.log('useFetch', url); // 디버깅
-    console.log('useFetch', initialData); // 디버깅
+    // console.log('useFetch', when); // 디버깅
+    // console.log('useFetch', url); // 디버깅
+    // console.log('useFetch', initialData); // 디버깅
 
     setLoading(false);
   }

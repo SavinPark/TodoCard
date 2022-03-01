@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from 'styled-components';
-import { TodoContext } from "../App";
+import { TodoContext, PageContext } from "../App";
 
 // styled-components
 const TodoTemplateBlock = styled.div `
@@ -21,13 +21,15 @@ const TodoTemplateBlock = styled.div `
 function TodoTemplate({children}) {
 
   const {n} = useContext(TodoContext);
+  const {p} = useContext(PageContext);
 
   return (
     <TodoTemplateBlock>
       {children}
 
       {/* -------- 디버깅 --------*/}
-      <h2 style={{color:'red'}}>{n}</h2>
+      <h2 style={{color:'red'}}>page : {p}</h2>
+      <h2 style={{color:'orange'}}>n : {n}</h2>
       
     </TodoTemplateBlock>
   );

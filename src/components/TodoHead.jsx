@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { TodoContext } from "../App";
+import { TodoContext, PageContext } from "../App";
 
 // styled-components
 const TodoHeadBlock = styled.div`
@@ -30,10 +30,11 @@ const TodoHeadBlock = styled.div`
 function TodoHead() {
 
   const {n} = useContext(TodoContext);
+  const {p} = useContext(PageContext);
 
   // 날짜, 요일
   const now = new Date();
-  const today = new Date(now.setDate(now.getDate() + n));
+  const today = new Date(now.setDate(now.getDate() + p));
   const dateString = today.toLocaleDateString('ko-KR', {
     year: 'numeric',
     month: 'long',
