@@ -43,7 +43,9 @@ const CheckCircle = styled.div`
     color: #38d9a9;
   `}
 `;
-const Text = styled.div`
+// const Text = styled.div`
+const Text = styled.li`
+  list-style: none;
   flex: 1;
   font-size: 21px;
   color: #495057;
@@ -56,7 +58,7 @@ const Text = styled.div`
 `;
 
 // TODOITEM COMPONENT
-function TodoItem() {
+function TodoItem({todo}) {
 
   const {n} = useContext(TodoContext);
 
@@ -75,18 +77,22 @@ function TodoItem() {
     console.log('Remove');
   }
 
+  // todo의 done 속성값이 true(완료)이면 'done', false(미완료)이면 ''
+  // const ItemClassName = todo.done === "1" ? 'done' : '';
 
   return (
     <>
       <TodoItemBlock>
         <CheckCircle onClick={onDone}>{<MdDone />}</CheckCircle>
-        <Text onClick={onEdit}>React 프로젝트</Text>
+        {/* <Text onClick={onEdit} className={ItemClassName}>{todo.title}</Text> */}
+        <Text onClick={onEdit}>{todo.title}</Text>
         <Remove onClick={onRemove}>
           <MdDelete />
         </Remove>
       </TodoItemBlock>
       {/* -------- 디버깅 --------*/}
-      <p>TodoItem {n}</p>
+      {/* {console.log(todo)}
+      <p>TodoItem {n}</p> */}
     </>
   );
 }
