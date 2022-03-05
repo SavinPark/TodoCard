@@ -32,12 +32,21 @@ MySQL, DBeaver, Express, Sequelize 사용
 * DELETE : 할 일 삭제
 * DONE / UNDONE : 할 일의 완료/미완료 상태 표시
 
-### [5] TodoFrom + 추가/수정/삭제/완료 상태 표현
-#### 완료 상태 표현
-* Done 상태에 따른 토글 버튼 색상 & 텍스트 색상 조정
-#### DELETE 기능
-* 마우스 hover시 나타나는 쓰레기통 아이콘 클릭시 해당 Todo 삭제 
-
+### [5] TodoFrom + ADD/EDIT/DELETE/DONE상태 표현
+#### TodoFrom
+* 새로운 Todo를 등록하거나, 기존의 Todo를 수정할 경우에 사용되는 컴포넌트
+#### ADD
+* 새로운 Todo를 등록하는 기능
+#### EDIT
+* 기존의 Todo를 수정하는 기능 (제목, 내용)
+#### DELETE
+* Todo를 삭제하는 기능
+* 삭제하고 싶은 Todo 제목의 오른쪽에 마우스 hover시 나타나는 쓰레기통 아이콘을 클릭하면 해당 Todo가 삭제된다.
+#### DONE 상태 표현
+* Todo의 완료(Done), 미완료(Undone) 상태를 나타내는 기능
+* 토글(Toggle) 버튼으로 클릭할 때마다 상태 변경
+* 완료(Done) 상태 : 민트색 원 + 체크 표시
+* 미완료(Undone) 상태 : 회색 원
 
 ### 다음 작업 ###
 - 코드 정리
