@@ -123,15 +123,15 @@ function TodoForm({todo, editOn}) {
   const onFormToggle = () => setOpen(!open);
 
   const onSubmit = (e) => {
-    // console.log('Save', n); // 디버깅
-    // console.log('Page : ', p); // 디버깅
+    // console.log('Save', n); // ddd
+    // console.log('Page : ', p); // ddd
     // console.log('todos : ', todos);
     e.preventDefault();
     if (todo) {  // edit 기능
-      console.log('edit save', todo.id); // 디버깅
+      console.log('edit save', todo.id); // ddd
       editTodo(todo.id, titleRef.current.value, contentsRef.current.value);
     } else {  // add 기능
-      console.log('add save'); // 디버깅
+      console.log('add save'); // ddd
       const now = new Date();
       const newTodoDate = Number(new Date(now.setDate(now.getDate()+p)).toISOString().substring(0,10).replace(/-/g,''))
       addTodo(newTodoDate, titleRef.current.value, contentsRef.current.value); 
@@ -160,7 +160,7 @@ function TodoForm({todo, editOn}) {
       <CircleButton onClick={onFormToggle} open={open} editOn={editOn}>
        <MdAdd style={{width: '70px', height: '70px', position: 'relative', right:'1px', top: '4px'}} />
       </CircleButton>
-      {/* --------- 디버깅 ---------- */}
+      {/* --------- *** ---------- */}
       {/* <p>TodoForm</p> */}
       {/* {console.log(editOn)} */}
     </>

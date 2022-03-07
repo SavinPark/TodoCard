@@ -55,7 +55,7 @@ function App() {
   
   // onPrev
   const onPrev = () => {
-    console.log('PREV : ', n-1); // 디버깅
+    // console.log('PREV : ', n-1); // ddd
     setN(n - 1);
     setPage([page[0] - 1, ...page].filter(p => p !== [page[0] - 1, ...page][[page[0] - 1, ...page].length - 1]));
 
@@ -71,7 +71,7 @@ function App() {
   
   // onNext
   const onNext = () => {
-    console.log('NEXT : ', n+1); // 디버깅
+    // console.log('NEXT : ', n+1); // ddd
     setN(n + 1);
     setPage([...page, page[page.length-1] + 1].filter(p => p !== page[0]));
 
@@ -91,7 +91,7 @@ function App() {
   
   // addTodo : ----------------------------------- 추가
   const addTodo = async (newTodoDate, newTodoTitle, newTodoContents) => { 
-    console.log('ADD NEW TODO : ', newTodoTitle, newTodoContents); // 디버깅
+    console.log('ADD NEW TODO : ', newTodoTitle, newTodoContents); // ddd
     setTodos([...todos, {date: newTodoDate, title: newTodoTitle, contents: newTodoContents, done: "0", edit: "0", delete: "0"}]);
     // 업데이트된 todo를 post로 server에 보냄
     const res = await axios(`http://localhost:4000/add/todo`, {
@@ -145,7 +145,7 @@ function App() {
         return todo;
       });
       setTodos(updateTodos);
-      // console.log(TODO.id); //디버깅
+      // console.log(TODO.id); // ddd
       // 업데이트된 todo를 put로 server에 보냄
       await axios(`http://localhost:4000/update/todo/edit/${TODO.id}`, {
         method: 'PUT',
@@ -168,7 +168,7 @@ function App() {
       return todo;
     });
     setTodos(updateTodos);
-    // console.log(TODO.id); //디버깅
+    // console.log(TODO.id); // ddd
     // 업데이트된 todo를 put로 server에 보냄
     await axios(`http://localhost:4000/update/todo/done/${TODO.id}`, {
       method: 'PUT',
@@ -194,7 +194,7 @@ function App() {
       }
       return todo;
     })
-    // console.log(updateTodos); // 디버깅
+    // console.log(updateTodos); // ddd
     setTodos(updateTodos);
     // 업데이트된 todo를 delete로 server에 보냄
     await axios(`http://localhost:4000/delete/todo/${todoId}`, {
@@ -208,7 +208,7 @@ function App() {
   const renderCards = (p) => {
     return (
       <div key={p}>
-      {/* [주의!] 여기는 PageContext !!! */}
+      {/* [주의!] PageContext !!! */}
       <PageContext.Provider value={{p}}>
         <TodoTemplate>
           <TodoHead />
@@ -230,7 +230,7 @@ function App() {
       <Carousel className='carousel'>
         <Slider className='slider'>
           
-          {/* [주의!] 여기는 TodoContext */}
+          {/* [주의!] TodoContext */}
           <TodoContext.Provider value={{n, todos, loading, addTodo, editTodo, changeTodoDone, changeTodoDelete, changeTodoEdit}} >
             
             {/* 카드 동적으로 렌더링 */}
@@ -244,7 +244,7 @@ function App() {
       <FaChevronRight className='controlBtn next' onClick={onNext} />
     </div>
 
-    {/* ------------ 디버깅 -------------- */}
+    {/* ------------ *** -------------- */}
     {/* {setTimeout(function(){console.log('PAGE : ', page)})} */}
     </>
   );

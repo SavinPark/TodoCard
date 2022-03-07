@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled, {css} from "styled-components";
-import { MdDone, MdDelete, MdAdd } from "react-icons/md";
+import { MdDone, MdDelete } from "react-icons/md";
 
 import TodoForm from "./TodoForm";
 import { TodoContext } from "../App";
@@ -67,25 +67,25 @@ function TodoItem({todo}) {
   // onDone
   const onDone = () => {
     console.log('Done / Undone');
-    console.log(todo.id); // 디버깅
+    console.log(todo.id); // ddd
     changeTodoDone(todo);
   }
 
   // onEdit
   const onEdit = () => {
     console.log('Edit');
-    // console.log(todo.id, e.target.dataset.id); //디버깅
+    // console.log(todo.id, e.target.dataset.id); // ddd
     changeTodoEdit(todo);
   }
 
   // onRemove
   const onRemove = () => {
     console.log('Remove');
-    // console.log(todo.id, e.target.dataset.id); //디버깅
+    // console.log(todo.id, e.target.dataset.id); // ddd
     changeTodoDelete(todo.id); 
   }
 
-  // todo의 done 속성값이 true(완료)이면 'done', false(미완료)이면 ''
+  // todo의 done 속성값이 true(완료)이면 'done', false(미완료)이면 'undone'
   const ItemClassName = todo.done === "1" ? 'done' : '';
 
   return (
@@ -100,7 +100,7 @@ function TodoItem({todo}) {
       </TodoItemBlock>
 
       {todo.edit === "1" && <TodoForm todo={todo} editOn={true}/>}
-      {/* -------- 디버깅 --------*/}
+      {/* -------- *** --------*/}
       {/* {console.log(todo)}
       <p>TodoItem {n}</p> */}
     </>

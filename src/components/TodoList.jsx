@@ -40,7 +40,7 @@ function TodoList() {
       
         {todoList}
 
-        {/* -------- 디버깅 --------*/}
+        {/* -------- *** --------*/}
         {/* <TodoItem /> */}
         {/* <p>TodoList {n}</p>
         {console.log(loading)}

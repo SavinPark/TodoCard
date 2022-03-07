@@ -56,7 +56,7 @@ function TodoHead() {
         <div className='tasks-left'>할 일 {undoneTasks.length}개 남음</div>
         {/* <div className='tasks-left'>할 일 0개 남음</div> */}
 
-        {/* -------- 디버깅 --------*/}
+        {/* -------- *** --------*/}
         {/* <p>TodoHead  {n}</p> */}
         {console.log(todos)}
 
