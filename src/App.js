@@ -24,10 +24,10 @@ const Carousel = styled.div`
   margin: 0 auto;
 
   display: flex;
-  // overflow: hidden;
+  overflow: hidden;
   justify-content: space-around;  // 카드 사이에 균등한 여백을 두고 정렬
 
-  border: 4px solid red;
+  // border: 4px solid red;
   // width:500px;
   // height: 1000px;
   // background: pink;
@@ -49,18 +49,9 @@ export const PageContext = React.createContext();
 // APP COMPONEMT
 function App() {
 
-  const [open, setOpen] = useState(false);
-  const onFormToggle = () => setOpen(!open);
-
   const [todos, setTodos] = useState([]);  // todos 
   const [n, setN] = useState(0);  // 날짜에 맞는 todos 찾기 위한 변수
-  const [page, setPage] = useState([-2, -1, 0, 1, 2]);  // 페이지 배열 (카드 구분)
-
-  // // dailyKey
-  // const now = new Date();
-  // const [dailyKey, setDaliyKey] = useState(Number(new Date(now.setDate(now.getDate())).toISOString().substring(0,10).replace(/-/g,'')));
-
-  // ------------------------------------------------------------------------------- //
+  const [page, setPage] = useState([-2, -1, 0, 1, 2]);  // page 배열 (카드 구분)
   
   // onPrev
   const onPrev = () => {
@@ -113,9 +104,8 @@ function App() {
         'edit' : "0",
         'delete' : "0"
       },
-      // headers: new Headers()
     });
-    alert('Todo 등록 완료');
+    alert('등록 완료');
     return window.location.reload();
   }
 
@@ -139,10 +129,9 @@ function App() {
         'contents' : newContents,
         'edit': '0',
       },
-      // headers: new Headers()
     });
     if(res.data) {
-      alert('Todo 수정 완료');
+      alert('수정 완료');
       return window.location.reload();
     }
   }
@@ -165,12 +154,11 @@ function App() {
           'edit' : TODO.edit==="1" ? "1" : "0" 
         },
       });
-      alert('Todo EDIT ON');
+      alert('Edit ON', TODO.edit);
       // return window.location.reload();
     }
 
   // changeTodoDone ------------------------- 완료 / 미완료
-  // const changeTodoDone = async (todoCode, todo) => {
   const changeTodoDone = async (TODO) => {
     const updateTodos = todos.map(todo => {
       if(todo.id === TODO.id) {
@@ -188,9 +176,12 @@ function App() {
         ...TODO,
         'done' : TODO.done==="1" ? "1" : "0" 
       },
-      // headers: new Headers()
     });
-    alert('Todo 완료/미완료');
+    if (TODO.done === "1") {
+      alert('Done');
+    } else {
+      alert('Undone');
+    }
     return window.location.reload();
   }
 
@@ -206,30 +197,26 @@ function App() {
     // console.log(updateTodos); // 디버깅
     setTodos(updateTodos);
     // 업데이트된 todo를 delete로 server에 보냄
-    // const res = await axios(`http://localhost:4000/delete/todo/${todoCode}`, {
     await axios(`http://localhost:4000/delete/todo/${todoId}`, {
       method: 'DELETE',
-      // headers: new Headers()
     });
-    alert('Todo 삭제 완료');
+    alert('삭제 완료');
     return window.location.reload();
   }
-  
-  // ----------------------------------------------------------- //
   
   // 카드를 동적으로 렌더링하는 함수
   const renderCards = (p) => {
     return (
-      // <div>
-      // [주의!] 여기는 PageContext !!!
-      <PageContext.Provider value={{p}} key={p}>
+      <div key={p}>
+      {/* [주의!] 여기는 PageContext !!! */}
+      <PageContext.Provider value={{p}}>
         <TodoTemplate>
           <TodoHead />
           <TodoList />
           <TodoForm />
         </TodoTemplate>
       </PageContext.Provider>
-      // {/* </div> */}
+      </div>
     );
   }
 
@@ -245,12 +232,10 @@ function App() {
           
           {/* [주의!] 여기는 TodoContext */}
           <TodoContext.Provider value={{n, todos, loading, addTodo, editTodo, changeTodoDone, changeTodoDelete, changeTodoEdit}} >
-            {/* <TodoTemplate>
-              <TodoHead />
-              <TodoList />
-              <TodoForm />
-            </TodoTemplate> */}
-            {page.map(p => renderCards(p))}
+            
+            {/* 카드 동적으로 렌더링 */}
+            {page.map(p => renderCards(p))}  
+
           </TodoContext.Provider>
 
         </Slider>
@@ -260,7 +245,7 @@ function App() {
     </div>
 
     {/* ------------ 디버깅 -------------- */}
-    {setTimeout(function(){console.log('PAGE : ', page)})}
+    {/* {setTimeout(function(){console.log('PAGE : ', page)})} */}
     </>
   );
 }

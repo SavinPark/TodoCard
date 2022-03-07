@@ -29,7 +29,7 @@ const TodoHeadBlock = styled.div`
 // TODOHEAD COMPONENT
 function TodoHead() {
 
-  const {n} = useContext(TodoContext);
+  const {n, todos} = useContext(TodoContext);
   const {p} = useContext(PageContext);
 
   // 날짜, 요일
@@ -44,16 +44,21 @@ function TodoHead() {
     weekday: 'long',
   });
 
+  // UndoneTasks
+  const dailyKey = Number(new Date(now.setDate(now.getDate() + p)).toISOString().substring(0,10).replace(/-/g,'')); 
+  const undoneTasks = todos.filter(todo => todo.date === dailyKey && todo.done === "0" );
+
   return (
     <>
       <TodoHeadBlock>
         <h1>{dateString}</h1>
         <div className='day'>{dayName}</div>
-        {/* <div className='tasks-left'>할 일 {undoneTasks.length}개 남음</div> */}
-        <div className='tasks-left'>할 일 0개 남음</div>
+        <div className='tasks-left'>할 일 {undoneTasks.length}개 남음</div>
+        {/* <div className='tasks-left'>할 일 0개 남음</div> */}
 
         {/* -------- 디버깅 --------*/}
         {/* <p>TodoHead  {n}</p> */}
+        {console.log(todos)}
 
       </TodoHeadBlock>
     </>

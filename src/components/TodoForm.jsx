@@ -112,7 +112,8 @@ const SaveBtn = styled.div`
 
 function TodoForm({todo, editOn}) {
 
-  const {n, todos, addTodo, editTodo} = useContext(TodoContext); // TodoContext
+  // const {n, todos, addTodo, editTodo} = useContext(TodoContext); // TodoContext
+  const {addTodo, editTodo} = useContext(TodoContext); // TodoContext
   const {p} = useContext(PageContext); // PageContext
   
   const titleRef = useRef(false);
@@ -122,15 +123,15 @@ function TodoForm({todo, editOn}) {
   const onFormToggle = () => setOpen(!open);
 
   const onSubmit = (e) => {
-    console.log('Save', n);
-    console.log('Page : ', p);
+    // console.log('Save', n); // 디버깅
+    // console.log('Page : ', p); // 디버깅
     // console.log('todos : ', todos);
     e.preventDefault();
     if (todo) {  // edit 기능
-      console.log('edit save', todo.id);
+      console.log('edit save', todo.id); // 디버깅
       editTodo(todo.id, titleRef.current.value, contentsRef.current.value);
     } else {  // add 기능
-      console.log('add save');
+      console.log('add save'); // 디버깅
       const now = new Date();
       const newTodoDate = Number(new Date(now.setDate(now.getDate()+p)).toISOString().substring(0,10).replace(/-/g,''))
       addTodo(newTodoDate, titleRef.current.value, contentsRef.current.value); 
@@ -146,16 +147,11 @@ function TodoForm({todo, editOn}) {
               placeholder="Title" 
               autoFocus
               ref={titleRef}
-              // onChange={onTitle}
-              // value={title}
-              // onKeyPress={onMoveFocus}
             />
             <Textarea
               id='nextFocus'
               placeholder="Contents" 
               ref={contentsRef}
-              // onChange={onContents}
-              // value={contents}
             />
             <SaveBtn onClick={onSubmit}>Save</SaveBtn>
           </InsertForm>
@@ -166,6 +162,7 @@ function TodoForm({todo, editOn}) {
       </CircleButton>
       {/* --------- 디버깅 ---------- */}
       {/* <p>TodoForm</p> */}
+      {/* {console.log(editOn)} */}
     </>
   );
 }

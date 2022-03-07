@@ -51,4 +51,4 @@ MySQL, DBeaver, Express, Sequelize 사용
 ### 다음 작업 ###
 - 코드 정리
 - 마지막 점검
-- 버그 점점
+- 보완할 점 : reload하면 가장 최근 카드가 아닌 오늘 카드로 이동...ㅡ.ㅡ

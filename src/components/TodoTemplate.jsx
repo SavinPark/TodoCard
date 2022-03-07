@@ -28,8 +28,8 @@ function TodoTemplate({children}) {
       {children}
 
       {/* -------- 디버깅 --------*/}
-      <h2 style={{color:'red'}}>page : {p}</h2>
-      <h2 style={{color:'orange'}}>n : {n}</h2>
+      {/* <h2 style={{color:'red'}}>page : {p}</h2> */}
+      {/* <h2 style={{color:'orange'}}>n : {n}</h2> */}
       
     </TodoTemplateBlock>
   );
