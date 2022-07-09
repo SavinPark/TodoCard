@@ -25,21 +25,11 @@ const Carousel = styled.div`
 
   display: flex;
   overflow: hidden;
-  justify-content: space-around;  // 카드 사이에 균등한 여백을 두고 정렬
-
-  // border: 4px solid red;
-  // width:500px;
-  // height: 1000px;
-  // background: pink;
+  justify-content: space-around;
 `;
 const Slider = styled.div`
   width: 2760px; 
   display: flex;
-  
-  // position: relative;
-  // height: 900px;
-  // margin: auto 0;
-  // background: powderblue;
 `;
 
 // Context API

@@ -7,12 +7,22 @@
 
 ## Information
 * React
-* DB : MySQL 사용
-* DB Tool : DBeaver 사용 
-* Server : Express 사용 
-* React와 Server 연동 : axios와 Custom Hook(useFetch) 사용 
-* Server와 DB 연동 : Sequelize 사용
+* DB : MySQL
+* DB Tool : DBeaver 
+* Server : Express
+* React와 Server 연동 : axios와 Custom Hook(useFetch)
+* Server와 DB 연동 : Sequelize
 
+### Run
+* Client
+```
+npm run start
+```
+* Server
+server 폴더 이동 후
+```
+node server.js
+```
 
 ## Process
 
@@ -55,8 +65,6 @@ MySQL, DBeaver, Express, Sequelize 사용
 
 
 ### NEXT ###
-- 코드 정리
-- 마지막 점검
 - 보완할 점 : 
    1) reload하면 가장 최근 카드가 아닌 오늘 카드로 이동..
    2) Edit form 열면 버튼 회전 안하고 & 색상 변함 없음
