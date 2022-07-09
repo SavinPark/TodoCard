@@ -18,10 +18,14 @@
 ```
 npm run start
 ```
-* Server
-server 폴더 이동 후
+* Server ( server 폴더 이동 후 )
 ```
 node server.js
+```
+
+### Github Pages
+```
+npm run deploy
 ```
 
 ## Process
